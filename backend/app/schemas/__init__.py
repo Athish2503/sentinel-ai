@@ -9,6 +9,7 @@ from app.schemas.baseline import (
     BaselineFeatureVectorResponse
 )
 from app.schemas.alert import AlertBase, AlertCreate, AlertResponse
+from app.schemas.detect import DetectRequest, DetectResponse
 
 __all__ = [
     "SessionBase",
@@ -26,6 +27,8 @@ __all__ = [
     "BaselineFeatureVectorResponse",
     "AlertBase",
     "AlertCreate",
-    "AlertResponse"
+    "AlertResponse",
+    "DetectRequest",
+    "DetectResponse"
 ]
 

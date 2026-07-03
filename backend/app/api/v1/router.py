@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints import health, sessions, tool_calls, baselines, alerts, agent, baseline_train
+from app.api.v1.endpoints import health, sessions, tool_calls, baselines, alerts, agent, baseline_train, detect
 
 api_router = APIRouter()
 
@@ -11,4 +11,5 @@ api_router.include_router(baselines.router, prefix="/baselines", tags=["Baseline
 api_router.include_router(baseline_train.router, prefix="/baseline", tags=["Baseline Training"])
 api_router.include_router(alerts.router, prefix="/alerts", tags=["Alerts"])
 api_router.include_router(agent.router, prefix="/agent", tags=["Agent"])
+api_router.include_router(detect.router, tags=["Anomaly Detection"])
 
