@@ -34,6 +34,8 @@ export interface Baseline {
   training_runs: number;
   threshold: number;
   created_at: string;
+  statistics?: BaselineStatistics;
+  feature_vectors?: BaselineFeatureVector[];
 }
 
 export interface BaselineFeatureVector {

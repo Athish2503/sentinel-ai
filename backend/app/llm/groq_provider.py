@@ -98,3 +98,9 @@ class GroqProvider(BaseLLMProvider):
         except Exception as e:
             logger.warning(f"Groq provider is unavailable or returned error: {e}")
             return False
+
+    def get_client(self) -> Any:
+        """
+        Get the ChatGroq client.
+        """
+        return self._client

@@ -55,3 +55,11 @@ class BaseLLMProvider(ABC):
             True if available and responsive, False otherwise.
         """
         pass
+
+    @abstractmethod
+    def get_client(self) -> Any:
+        """
+        Retrieve the underlying model client (e.g., ChatGroq instance).
+        """
+        pass
+

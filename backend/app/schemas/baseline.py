@@ -14,6 +14,8 @@ class BaselineCreate(BaselineBase):
 class BaselineResponse(BaselineBase):
     id: uuid.UUID
     created_at: datetime
+    statistics: Optional[Dict[str, Any]] = None
+    feature_vectors: Optional[List[BaselineFeatureVectorResponse]] = None
 
     model_config = ConfigDict(from_attributes=True)
 

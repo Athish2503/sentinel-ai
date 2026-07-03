@@ -5,6 +5,7 @@ from langchain_groq import ChatGroq
 from langgraph.graph import StateGraph, END, add_messages
 from langgraph.prebuilt import ToolNode
 
+from app.llm import LLMFactory
 from app.utils.config import settings
 from app.utils.logger import logger
 from app.tools.agent_tools import (
@@ -22,19 +23,10 @@ class AgentState(TypedDict):
 # Retrieve/Initialize LLM Model
 def get_agent_llm() -> ChatGroq:
     """
-    Instantiates the Groq Chat model using credentials from configurations.
+    Instantiates the Groq Chat model using credentials from configurations via LLMFactory.
     """
-    # Use standard versatile Groq models: llama-3.3-70b-specdec or llama-3.1-70b-versatile
-    # llama-3.3-70b-specdec is generally preferred for tool-use speed and accuracy on Groq.
-    # Fall back to llama-3.1-70b-versatile if desired.
-    model_name = getattr(settings, "GROQ_MODEL", None) or "llama-3-70b-8192"
-    logger.info(f"Initializing Groq LLM with model: {model_name}")
-    
-    return ChatGroq(
-        model=model_name,
-        api_key=settings.GROQ_API_KEY,
-        temperature=0.0
-    )
+    logger.info("Initializing Groq LLM using LLMFactory.")
+    return LLMFactory.create().get_client()
 
 # List of enterprise assistant tools
 enterprise_tools = [

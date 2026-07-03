@@ -73,6 +73,51 @@ def run_agent(payload: AgentRunInput, db: DBSession = Depends(get_db)):
         )
         logger.info(f"Agent execution completed successfully for session {session_id_str}.")
         
+        # 4. Trigger anomaly detection immediately on the live session
+        try:
+            from app.detector import IsolationForestPredictor, BehaviorExplainer
+            from app.schemas.session import SessionUpdate as DBSessionUpdate
+            from app.schemas.alert import AlertCreate
+            from app.services import alert as alert_service
+
+            logger.info(f"Running automated anomaly detection for live session {session_id_str}...")
+            prediction = IsolationForestPredictor.predict(db, db_session.id)
+            
+            reasons = BehaviorExplainer.explain(
+                session_features=prediction["session_features"],
+                baseline_features=prediction["baseline_features"],
+                vocabulary=prediction["vocabulary"]
+            )
+            if prediction["status"] == "Injected" and not reasons:
+                reasons.append("Behavioral anomaly: Isolation Forest model detected general execution flow deviation from established baseline.")
+                
+            score = prediction["score"]
+            status_label = prediction["status"]
+            
+            # Save anomaly score and updated status (Normal/Injected) to database session
+            session_service.update_session(
+                db=db,
+                db_session=db_session,
+                session_in=DBSessionUpdate(
+                    anomaly_score=score,
+                    status=status_label
+                )
+            )
+            logger.info(f"Automated anomaly detection complete. Score: {score:.4f}, Status: {status_label}")
+            
+            if status_label == "Injected":
+                alert_reason = "\n".join([f"* {r}" for r in reasons]) if len(reasons) > 1 else (reasons[0] if reasons else "Behavioral anomaly")
+                alert_in = AlertCreate(
+                    session_id=db_session.id,
+                    score=score,
+                    reason=alert_reason
+                )
+                alert_service.create_alert(db, alert_in)
+                logger.info(f"Created threat alert for session {session_id_str}.")
+        except Exception as detection_err:
+            logger.error(f"Failed to execute automated anomaly detection: {detection_err}", exc_info=True)
+            # We don't fail the request if detection failed, but log the issue
+            
         return AgentRunOutput(
             response=response_content,
             session_id=session_id_str

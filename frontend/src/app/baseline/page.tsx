@@ -84,8 +84,8 @@ export default function BaselinePage() {
     return <ErrorState onRetry={() => refetchBaseline()} />;
   }
 
-  // Use statistics from training success or fall back to mock baseline statistics
-  const stats: BaselineStatistics = trainingSuccessInfo?.statistics || mockBaselineStats;
+  // Use statistics from training success or active baseline, falling back to mock baseline statistics
+  const stats: BaselineStatistics = trainingSuccessInfo?.statistics || activeBaseline?.statistics || mockBaselineStats;
   const currentBaseline = activeBaseline;
 
   // Chart data formatting: Tool frequencies

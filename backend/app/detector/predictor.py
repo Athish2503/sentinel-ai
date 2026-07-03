@@ -28,7 +28,8 @@ class IsolationForestPredictor:
         Retrieves the active baseline from database, builds the vocabulary,
         extracts behavior vectors, fits the Isolation Forest model, and caches them.
         """
-        active_baseline = db.query(Baseline).order_by(Baseline.created_at.desc()).first()
+        from app.services import baseline as baseline_service
+        active_baseline = baseline_service.get_active_baseline(db)
         if not active_baseline:
             raise ValueError("No active baseline has been established in the database.")
 

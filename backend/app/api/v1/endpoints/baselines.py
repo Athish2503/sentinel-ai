@@ -33,4 +33,9 @@ def get_active_baseline(db: Session = Depends(get_db)):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="No active baseline has been established yet."
         )
+    
+    # Calculate stats dynamically from feature vectors
+    stats = baseline_service.calculate_baseline_stats(active_baseline.feature_vectors)
+    active_baseline.statistics = stats
+    
     return active_baseline
