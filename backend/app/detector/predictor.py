@@ -116,6 +116,43 @@ class IsolationForestPredictor:
         is_anomaly = decision_score < cls._cached_threshold
         status = "Injected" if is_anomaly else "Normal"
 
+        # Hybrid detection: Check for high-confidence rule-based anomalies to override false negatives
+        from app.detector.explainer import BehaviorExplainer
+        reasons = BehaviorExplainer.explain(
+            session_features=session_features,
+            baseline_features=cls._cached_baseline_vectors,
+            vocabulary=cls._cached_vocabulary
+        )
+        
+        has_unusual_transitions = False
+        has_unexpected_tools = False
+        has_excessive_count = False
+        has_suspicious_payload = False
+        
+        for reason in reasons:
+            if "unusual tool transitions" in reason:
+                has_unusual_transitions = True
+            if "Unexpected tool usage" in reason:
+                has_unexpected_tools = True
+            if "Unusual execution count" in reason:
+                # Flag as high-confidence if count is significantly high (e.g. >= 4)
+                if session_features.get("execution_count", 0) >= 4:
+                    has_excessive_count = True
+            if "suspicious patterns" in reason:
+                has_suspicious_payload = True
+                
+        is_high_confidence_anomaly = (
+            has_unusual_transitions or 
+            has_unexpected_tools or 
+            has_excessive_count or 
+            has_suspicious_payload
+        )
+        
+        if is_high_confidence_anomaly:
+            status = "Injected"
+            if score < 0.5:
+                score = 0.5 + (0.4 * (1.0 - score))  # Boost score to 0.5 - 0.9 range
+
         return {
             "score": score,
             "decision_score": decision_score,

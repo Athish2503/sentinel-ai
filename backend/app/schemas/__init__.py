@@ -10,6 +10,7 @@ from app.schemas.baseline import (
 )
 from app.schemas.alert import AlertBase, AlertCreate, AlertResponse
 from app.schemas.detect import DetectRequest, DetectResponse
+from app.schemas.simulate import SimulateResponse
 
 __all__ = [
     "SessionBase",
@@ -29,6 +30,7 @@ __all__ = [
     "AlertCreate",
     "AlertResponse",
     "DetectRequest",
-    "DetectResponse"
+    "DetectResponse",
+    "SimulateResponse"
 ]
 
