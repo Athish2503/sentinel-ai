@@ -4,7 +4,7 @@ from typing import Any
 
 class BaseLLMProvider(ABC):
     """
-    Abstract Base Class representing the interface for LLM Providers in Sentinel AI.
+    Abstract Base Class representing the interface for LLM Providers in Kavalar.
     Ensures decoupled model invocation and standard health check endpoints.
     """
 

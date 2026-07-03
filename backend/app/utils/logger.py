@@ -4,7 +4,7 @@ from app.utils.config import settings
 
 def setup_logging():
     """
-    Sets up the centralized logging configuration for the Sentinel AI backend.
+    Sets up the centralized logging configuration for the Kavalar backend.
     Logs to stdout with a clean format.
     """
     log_format = "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
@@ -27,4 +27,4 @@ def setup_logging():
 setup_logging()
 
 # Expose a default logger for the app module
-logger = logging.getLogger("sentinel_ai")
+logger = logging.getLogger("kavalar")

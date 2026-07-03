@@ -1,6 +1,6 @@
-# Sentinel AI: System Architecture Detail
+# Kavalar: System Architecture Detail
 
-This document outlines the detailed system architecture, modules, database schema, and data flows within Sentinel AI.
+This document outlines the detailed system architecture, modules, database schema, and data flows within Kavalar.
 
 ---
 

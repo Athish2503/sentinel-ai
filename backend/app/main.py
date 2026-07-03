@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI):
     Context manager for the application lifecycle.
     Triggers database schema synchronization on startup.
     """
-    logger.info("Starting up Sentinel AI FastAPI application.")
+    logger.info("Starting up Kavalar FastAPI application.")
     try:
         # Create tables automatically on startup
         logger.info("Syncing database schema (creating tables if not exists)...")
@@ -27,11 +27,11 @@ async def lifespan(app: FastAPI):
     
     yield
     
-    logger.info("Shutting down Sentinel AI FastAPI application.")
+    logger.info("Shutting down Kavalar FastAPI application.")
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="Sentinel AI: Behavioral anomaly detector for prompt injection attacks.",
+    description="Kavalar: Behavioral anomaly detector for prompt injection attacks.",
     version="1.0.0",
     lifespan=lifespan
 )

@@ -3,7 +3,7 @@ import axios from 'axios';
 // Get backend URL from localStorage if available (helps configure settings dynamically)
 const getBaseURL = () => {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('sentinel_backend_url');
+    const saved = localStorage.getItem('kavalar_backend_url');
     if (saved) return saved;
   }
   return 'http://localhost:8000/api/v1';

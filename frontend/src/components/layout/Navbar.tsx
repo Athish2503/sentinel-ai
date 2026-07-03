@@ -94,7 +94,7 @@ export function Navbar({ onMenuToggle }: NavbarProps) {
           </div>
           <div className="hidden md:flex flex-col text-left">
             <span className="text-[11px] font-mono font-medium text-zinc-300 leading-tight">Admin User</span>
-            <span className="text-[9px] font-sans text-zinc-500">Sentinel Security</span>
+            <span className="text-[9px] font-sans text-zinc-500">Kavalar Security</span>
           </div>
         </div>
       </div>

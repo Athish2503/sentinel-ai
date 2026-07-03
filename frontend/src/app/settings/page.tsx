@@ -28,16 +28,16 @@ export default function SettingsPage() {
   // Load from localStorage on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedUrl = localStorage.getItem('sentinel_backend_url');
+      const savedUrl = localStorage.getItem('kavalar_backend_url');
       if (savedUrl) setBackendUrl(savedUrl);
       
-      const savedProvider = localStorage.getItem('sentinel_llm_provider');
+      const savedProvider = localStorage.getItem('kavalar_llm_provider');
       if (savedProvider) setLlmProvider(savedProvider);
 
-      const savedThreshold = localStorage.getItem('sentinel_threshold');
+      const savedThreshold = localStorage.getItem('kavalar_threshold');
       if (savedThreshold) setThreshold(parseFloat(savedThreshold));
 
-      const savedTheme = localStorage.getItem('sentinel_theme');
+      const savedTheme = localStorage.getItem('kavalar_theme');
       if (savedTheme) setThemeName(savedTheme);
     }
   }, []);
@@ -59,10 +59,10 @@ export default function SettingsPage() {
 
   const handleSave = () => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('sentinel_backend_url', backendUrl);
-      localStorage.setItem('sentinel_llm_provider', llmProvider);
-      localStorage.setItem('sentinel_threshold', threshold.toString());
-      localStorage.setItem('sentinel_theme', themeName);
+      localStorage.setItem('kavalar_backend_url', backendUrl);
+      localStorage.setItem('kavalar_llm_provider', llmProvider);
+      localStorage.setItem('kavalar_threshold', threshold.toString());
+      localStorage.setItem('kavalar_theme', themeName);
       
       setIsSaved(true);
       setTimeout(() => setIsSaved(false), 2000);
@@ -120,7 +120,7 @@ export default function SettingsPage() {
                   className="w-full px-3.5 py-2 rounded-lg bg-zinc-900/60 border border-zinc-800 text-xs font-mono text-zinc-250 placeholder-zinc-550 focus:outline-none focus:border-zinc-700"
                 />
                 <span className="text-[9px] text-zinc-500 font-sans block">
-                  Sentinel AI UI will dispatch Axios requests to this route prefix. Default: http://localhost:8000/api/v1
+                  Kavalar UI will dispatch Axios requests to this route prefix. Default: http://localhost:8000/api/v1
                 </span>
               </div>
 
@@ -246,15 +246,15 @@ export default function SettingsPage() {
         <div className="lg:col-span-4 p-6 border border-zinc-900 rounded-xl bg-zinc-950/40 backdrop-blur-md text-left space-y-4">
           <div className="flex items-center gap-2 text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider">
             <Info className="w-4 h-4 text-zinc-450" />
-            <span>About Sentinel AI</span>
+            <span>About Kavalar</span>
           </div>
 
           <div className="space-y-3.5 text-xs font-sans text-zinc-450 leading-relaxed">
             <p>
-              <span className="font-semibold text-zinc-300">Sentinel AI</span> is a state-of-the-art enterprise AI Governance and Security Firewall. 
+              <span className="font-semibold text-zinc-300">Kavalar</span> is a state-of-the-art enterprise AI Governance and Security Firewall. 
             </p>
             <p>
-              By intercepting agent tool executions and analyzing transition pathways through an <span className="font-mono text-xs text-zinc-350 bg-zinc-900 px-1 py-0.5 rounded border border-zinc-850">Isolation Forest</span> behavioral model, Sentinel flags anomalies, sequence deviation payloads, and prompt injection attacks in real time.
+              By intercepting agent tool executions and analyzing transition pathways through an <span className="font-mono text-xs text-zinc-350 bg-zinc-900 px-1 py-0.5 rounded border border-zinc-850">Isolation Forest</span> behavioral model, Kavalar flags anomalies, sequence deviation payloads, and prompt injection attacks in real time.
             </p>
             
             <div className="border-t border-zinc-900 pt-3 space-y-2 text-[10px] font-mono text-zinc-500">

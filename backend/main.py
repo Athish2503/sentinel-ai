@@ -5,7 +5,7 @@ from app.main import app
 def root():
     return {
         "status": "running",
-        "service": "Sentinel AI Behavioral Anomaly Detector Backend"
+        "service": "Kavalar Behavioral Anomaly Detector Backend"
     }
 
 @app.get("/health")
@@ -15,4 +15,4 @@ def health():
     """
     return {
         "status": "healthy"
-    }
+    }

@@ -11,7 +11,7 @@ interface ErrorStateProps {
 
 export function ErrorState({
   title = 'System query failure',
-  description = 'Failed to establish connection with the Sentinel anomaly detection backend.',
+  description = 'Failed to establish connection with the Kavalar anomaly detection backend.',
   onRetry,
   className
 }: ErrorStateProps) {

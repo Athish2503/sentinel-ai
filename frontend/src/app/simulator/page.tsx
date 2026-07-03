@@ -70,7 +70,7 @@ export default function SimulatorPage() {
       setSelectedScenario(attackNumber);
       setSimulationResult(null);
       setTerminalLogs([
-        `[${new Date().toLocaleTimeString()}] sentinel-sandbox:~$ run-simulation --scenario-id ${attackNumber}`,
+        `[${new Date().toLocaleTimeString()}] kavalar-sandbox:~$ run-simulation --scenario-id ${attackNumber}`,
         `[${new Date().toLocaleTimeString()}] [SYSTEM] Spawning enterprise AI agent sandbox environment...`,
         `[${new Date().toLocaleTimeString()}] [AGENT] Prompting: "${scenarios[attackNumber].query}"`,
         `[${new Date().toLocaleTimeString()}] [SANDBOX] Auditing middleware active. Intercepting tool execution...`,

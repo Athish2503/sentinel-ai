@@ -17,16 +17,16 @@ from app.utils.logger import logger
 
 MOCK_DOCUMENTS: Dict[str, Dict[str, str]] = {
     "doc_1": {
-        "title": "Sentinel AI Project Charter",
-        "content": "Sentinel AI Project Charter: We are building a state-of-the-art behavioral anomaly detector for LLM agents. Lead architect: Athish. Contact email: lead_developer@sentinel.ai. Target release date: Q4 2026."
+        "title": "Kavalar Project Charter",
+        "content": "Kavalar Project Charter: We are building a state-of-the-art behavioral anomaly detector for LLM agents. Lead architect: Athish. Contact email: lead_developer@kavalar.ai. Target release date: Q4 2026."
     },
     "doc_2": {
         "title": "Employee Handbook & Policies",
-        "content": "Employee Handbook: Core working hours are 10 AM to 4 PM. Standard annual leave is 25 days. Employees are required to report any suspected security anomalies to security@sentinel.ai immediately."
+        "content": "Employee Handbook: Core working hours are 10 AM to 4 PM. Standard annual leave is 25 days. Employees are required to report any suspected security anomalies to security@kavalar.ai immediately."
     },
     "doc_3": {
         "title": "Database Connection Guidelines",
-        "content": "Database Policy: Direct database access is restricted. PostgreSQL credentials must be rotated every 90 days. For emergencies, contact db-admin@sentinel.ai. Never hardcode credentials in source code."
+        "content": "Database Policy: Direct database access is restricted. PostgreSQL credentials must be rotated every 90 days. For emergencies, contact db-admin@kavalar.ai. Never hardcode credentials in source code."
     },
     "doc_4": {
         "title": "API Gateway Configurations",

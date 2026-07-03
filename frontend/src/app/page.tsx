@@ -101,7 +101,7 @@ export default function Dashboard() {
       {/* Header */}
       <SectionHeader 
         title="Security Overview" 
-        description="Real-time behavioral monitoring and prompt injection detection for Sentinel AI agents."
+        description="Real-time behavioral monitoring and prompt injection detection for Kavalar agents."
         actions={
           <button
             onClick={() => refetch()}

@@ -4,9 +4,9 @@ from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.utils.logger import logger
 
-class SentinelException(Exception):
+class KavalarException(Exception):
     """
-    Base exception class for all custom Sentinel AI errors.
+    Base exception class for all custom Kavalar errors.
     """
     def __init__(self, message: str, status_code: int = 500, details: dict = None):
         self.message = message
@@ -14,7 +14,7 @@ class SentinelException(Exception):
         self.details = details or {}
         super().__init__(message)
 
-class EntityNotFoundException(SentinelException):
+class EntityNotFoundException(KavalarException):
     """
     Exception raised when a requested entity does not exist in the database.
     """
@@ -24,7 +24,7 @@ class EntityNotFoundException(SentinelException):
             status_code=404
         )
 
-class DatabaseException(SentinelException):
+class DatabaseException(KavalarException):
     """
     Exception raised when a database operation fails.
     """
@@ -39,9 +39,9 @@ def register_exception_handlers(app: FastAPI):
     """
     Registers custom exception handlers on the FastAPI application instance.
     """
-    @app.exception_handler(SentinelException)
-    async def sentinel_exception_handler(request: Request, exc: SentinelException):
-        logger.error(f"SentinelException: {exc.message} [Code: {exc.status_code}] - Details: {exc.details}")
+    @app.exception_handler(KavalarException)
+    async def kavalar_exception_handler(request: Request, exc: KavalarException):
+        logger.error(f"KavalarException: {exc.message} [Code: {exc.status_code}] - Details: {exc.details}")
         return JSONResponse(
             status_code=exc.status_code,
             content={

@@ -1,6 +1,6 @@
-# Sentinel AI: Anomaly Detection Engine
+# Kavalar: Anomaly Detection Engine
 
-This document details the mathematical formulations, feature extraction pipeline, machine learning model details, and rule-based fallback logic used by Sentinel AI to detect prompt injection behaviors.
+This document details the mathematical formulations, feature extraction pipeline, machine learning model details, and rule-based fallback logic used by Kavalar to detect prompt injection behaviors.
 
 ---
 
@@ -62,7 +62,7 @@ $$Score = \frac{1}{1 + e^{d \cdot 10.0}}$$
 
 ## 🕵️ Rule-Based Explainability & Override Layer
 
-Machine learning models are prone to false negatives due to data drifts or minor vector alignments. Sentinel AI deploys a deterministic **Rule-Based Explanation Layer** (`BehaviorExplainer`) that runs concurrently with the Isolation Forest model. 
+Machine learning models are prone to false negatives due to data drifts or minor vector alignments. Kavalar deploys a deterministic **Rule-Based Explanation Layer** (`BehaviorExplainer`) that runs concurrently with the Isolation Forest model. 
 
 If any high-confidence rules are triggered, the engine **overrides** the Isolation Forest status to `"Injected"` and boosts the anomaly score into the `0.5 - 0.9` range:
 

@@ -1,6 +1,6 @@
 class LLMProviderError(Exception):
     """
-    Base exception class for all LLM provider related errors in Sentinel AI.
+    Base exception class for all LLM provider related errors in Kavalar.
     """
     pass
 

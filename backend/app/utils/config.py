@@ -24,7 +24,7 @@ class Settings(BaseModel):
     GROQ_API_KEY: Optional[str] = Field(default_factory=lambda: os.getenv("GROQ_API_KEY"))
     ENVIRONMENT: str = Field(default_factory=lambda: os.getenv("ENVIRONMENT", "development"))
     LOG_LEVEL: str = Field(default_factory=lambda: os.getenv("LOG_LEVEL", "INFO"))
-    APP_NAME: str = Field(default="Sentinel AI")
+    APP_NAME: str = Field(default="Kavalar")
     API_V1_STR: str = Field(default="/api/v1")
 
     @property

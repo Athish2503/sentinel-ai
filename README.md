@@ -1,6 +1,6 @@
-# Sentinel AI: Behavioral Anomaly Detection & Prompt Injection Defense
+# Kavalar: Behavioral Anomaly Detection & Prompt Injection Defense
 
-Sentinel AI is an enterprise-grade AI security governance platform designed to protect LLM agents (built on **LangGraph** and powered by **Groq**) from prompt injection attacks. It does this by profiling normal tool usage patterns, logging executed steps via custom interceptor middleware, and auditing sequences in real time using an **Isolation Forest** anomaly detection engine combined with a high-confidence rule-based explanation layer.
+Kavalar is an enterprise-grade AI security governance platform designed to protect LLM agents (built on **LangGraph** and powered by **Groq**) from prompt injection attacks. It does this by profiling normal tool usage patterns, logging executed steps via custom interceptor middleware, and auditing sequences in real time using an **Isolation Forest** anomaly detection engine combined with a high-confidence rule-based explanation layer.
 
 The project features a sleek, modern Next.js dashboard visualizer for security operations, allowing teams to explore agent execution logs, inspect tool transition graphs, view anomaly statistics, and launch threat simulations.
 
@@ -8,7 +8,7 @@ The project features a sleek, modern Next.js dashboard visualizer for security o
 
 ## 🏗️ System Architecture
 
-The following diagram illustrates the lifecycle of a prompt injection attack and how Sentinel AI intercepts, logs, and flags the behavioral anomaly.
+The following diagram illustrates the lifecycle of a prompt injection attack and how Kavalar intercepts, logs, and flags the behavioral anomaly.
 
 ```mermaid
 graph TD
@@ -42,7 +42,7 @@ graph TD
 
 ## 🛠️ Core Components
 
-Sentinel AI is split into two primary components:
+Kavalar is split into two primary components:
 
 ### 1. Backend (`/backend`) — FastAPI & LangGraph & ML Engine
 *   **LangGraph Assistant Agent**: ReAct agent utilizing Groq (`llama-3.3-70b-versatile` or `llama-3.0-70b-8192`) bound to tools (`search_documents`, `read_document`, `calculator`, `send_email`, `lookup_customer`).
@@ -86,7 +86,7 @@ Sentinel AI is split into two primary components:
     ```
 4.  Configure environment variables in a `.env` file inside `/backend`:
     ```ini
-    DATABASE_URL=sqlite:///./sentinel_ai.db
+    DATABASE_URL=sqlite:///./kavalar.db
     GROQ_API_KEY=your_groq_api_key_here
     MODEL_NAME=llama-3.3-70b-versatile
     ```
@@ -128,6 +128,6 @@ The simulator allows you to trigger four behaviors to test the anomaly detection
 
 ## 📖 Deep Dives
 
-To learn more about specific layers of Sentinel AI, read the detailed documentation files:
-*   [**ARCHITECTURE.md**](file:///d:/Sentinel-ai/ARCHITECTURE.md): Detailed layout of backend files, LangGraph nodes, middleware, and database schemas.
-*   [**DETECTOR_ENGINE.md**](file:///d:/Sentinel-ai/DETECTOR_ENGINE.md): Explanation of feature extraction formulas, Isolation Forest training, and the rule-based explanation overrides.
+To learn more about specific layers of Kavalar, read the detailed documentation files:
+*   [**ARCHITECTURE.md**](ARCHITECTURE.md): Detailed layout of backend files, LangGraph nodes, middleware, and database schemas.
+*   [**DETECTOR_ENGINE.md**](DETECTOR_ENGINE.md): Explanation of feature extraction formulas, Isolation Forest training, and the rule-based explanation overrides.

@@ -24,10 +24,10 @@ try:
 except Exception as e:
     logger.warning(
         f"Failed to connect to primary database at {db_url} due to: {e}. "
-        f"Falling back to local SQLite database: sqlite:///./sentinel_ai.db"
+        f"Falling back to local SQLite database: sqlite:///./kavalar.db"
     )
     # Fallback engine using SQLite
-    db_url = "sqlite:///./sentinel_ai.db"
+    db_url = "sqlite:///./kavalar.db"
     engine = create_engine(db_url, connect_args={"check_same_thread": False})
 
 # Create SessionLocal session factory

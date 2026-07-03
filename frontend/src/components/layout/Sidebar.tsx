@@ -59,7 +59,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
               <Shield className="w-5 h-5" />
             </div>
             <span className="font-mono font-bold text-sm tracking-wider uppercase text-zinc-100">
-              Sentinel AI
+              Kavalar
             </span>
           </Link>
           <button

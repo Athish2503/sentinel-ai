@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sentinel AI | Enterprise AI Governance Dashboard",
+  title: "Kavalar | Enterprise AI Governance Dashboard",
   description: "Behavioral anomaly detection and prompt injection monitoring for autonomous AI agent networks.",
 };
 

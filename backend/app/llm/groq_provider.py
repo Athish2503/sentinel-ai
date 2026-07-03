@@ -11,7 +11,7 @@ from app.llm.exceptions import (
     LLMAPIError,
 )
 
-logger = logging.getLogger("sentinel_ai")
+logger = logging.getLogger("kavalar")
 
 
 class GroqProvider(BaseLLMProvider):
