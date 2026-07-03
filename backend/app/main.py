@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.utils.config import settings
 from app.utils.logger import logger
 from app.database.session import engine
-from app.models.base import Base
+from app.models import Base
 from app.middleware.exception_handler import register_exception_handlers
 from app.api.v1.router import api_router
 
