@@ -1,14 +1,18 @@
 # pyrefly: ignore [missing-import]
-from fastapi import FastAPI
-
-app = FastAPI(title="Sentinel AI")
+from app.main import app
 
 @app.get("/")
 def root():
-    return {"status": "running"}
+    return {
+        "status": "running",
+        "service": "Sentinel AI Behavioral Anomaly Detector Backend"
+    }
 
 @app.get("/health")
 def health():
+    """
+    Root level health redirect/alias.
+    """
     return {
         "status": "healthy"
-    }
+    }
