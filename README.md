@@ -60,14 +60,35 @@ Kavalar is split into two primary components:
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start & Deployment
 
-### Prerequisites
-*   Python 3.10+
-*   Node.js 18+
-*   Groq API Key (Sign up at [Groq Console](https://console.groq.com/))
+We have provided automated scripts to set up and start the application instantly, as well as a Docker Compose orchestrator.
 
-### 1. Set Up the Backend
+### Option A: Single-Command Local Script (Recommended)
+
+This script automates environment variable setup, backend virtual environment creation, package installation, baseline ML model pre-training, and concurrent server launch.
+
+- **macOS / Linux / Git Bash**:
+  ```bash
+  chmod +x run_local.sh
+  ./run_local.sh
+  ```
+- **Windows Command Prompt**:
+  ```cmd
+  run_local.bat
+  ```
+
+### Option B: Docker Compose Deployment
+
+If you have Docker and Docker Compose installed:
+```bash
+docker-compose up --build
+```
+This builds and connects both backend (FastAPI, port 8000) and frontend (Next.js, port 3000) containers. On startup, the backend automatically seeds and pre-trains the baseline detector.
+
+### Option C: Manual Setup
+
+#### 1. Set Up the Backend
 1.  Navigate to the backend directory:
     ```bash
     cd backend
